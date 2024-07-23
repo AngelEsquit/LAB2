@@ -6,9 +6,9 @@ fun suma(numbers: List<Int>): Int {
 
 fun main () {
     // Ejercicio 1 - Promedio
-    var listaNumeros = listOf<Int>(1, 2, 3, 34)
+    var listaNumeros = listOf<Int>(1, 2, 3, 33)
     val total = suma(listaNumeros)
-    val promedio = total/listaNumeros.size
+    val promedio = total.toDouble()/listaNumeros.size
     println("Promedio: " + promedio) // Duda de decimales
 
     // Ejercicio 2 - Filtrar impares
@@ -28,10 +28,7 @@ fun main () {
     val nombresSaludos = nombres.map {"¡Hola, $it!"}
     println(nombresSaludos)
 
-    // Ejercicio 5 y 6 - PerformOperation
-    data class Person(val name: String, val age: Int, val gender: String)
-    data class Student(val name: String, val age: Int, val gender: String, val studentId: String)
-
+    // Ejercicio 5 - PerformOperation
     fun performOperation(numbers: List<Int>, operacion: String): Int {
         // Definir las lambdas dentro de la función
         val suma: (List<Int>) -> Int = { list -> list.sum() }
@@ -45,4 +42,16 @@ fun main () {
     }
 
     println(performOperation(listaNumeros, "resta"))
+
+    // Ejercicio 6 - Persona y Estudiante
+    data class Person(val name: String, val age: Int, val gender: String)
+    data class Student(val name: String, val age: Int, val gender: String, val studentId: String)
+
+    fun mapPerson (persona: Person): Student{
+        return Student(persona.name, persona.age, persona.gender, "")
+    }
+
+    val persona1 = Person("Diego", 18, "Hombre")
+    val estudiante1 = mapPerson(persona1)
+    println("El Estudiante ${estudiante1.name} tiene ${estudiante1.age}")
 }
